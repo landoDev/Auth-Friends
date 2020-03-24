@@ -6,6 +6,7 @@ import PrivateRoute from './components/PrivateRoute'
 import LoginForm from './components/LoginForm';
 import { FriendsContext } from './contexts/FriendsContext';
 import FriendsList from './components/FriendsList';
+import FriendForm from './components/FriendForm';
 
 
 function App() {
@@ -16,9 +17,11 @@ function App() {
       <nav>
         <Link to='/login' >Login</Link>
         <Link to='/friends-list' >Friends</Link>
+        <Link to='/add-friends'>Add Friends</Link>
       </nav>
       <FriendsContext.Provider>
         <Switch>
+          <PrivateRoute exact path='/add-friends' component={FriendForm} />
           <PrivateRoute exact path='/friends-list' component={FriendsList} />
           <Route path='/login' component={LoginForm} />
         </Switch>
