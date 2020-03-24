@@ -11,13 +11,23 @@ const FriendsList = () =>{
     axiosWithAuth()
       .get('/api/friends')
       .then(res=>{
-        console.log(res)
+        // console.log(res.data)
+        setFriendData(res.data)
       })
-      .catch(err=> console.log('wtf man', err))
+      .catch(err=> console.log('Prob something Ross did', err))
     }   
     return(
         <div>
-            <h2>Your Friends</h2>
+            {/* {friendData === [] ? (<div>Calling in Friends</div>) : } */}
+            <h2>Central Perk Faves</h2>
+            {friendData.map(friend=>{
+                return(
+                    <div key={friend.id}>
+                        <h3>{friend.name}</h3>
+                        <p>{friend.email}</p>
+                    </div>
+                )
+            })}
         </div>
     )
 }

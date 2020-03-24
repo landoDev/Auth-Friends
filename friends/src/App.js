@@ -15,7 +15,7 @@ function App() {
       <h1>FRIENDS</h1>
       <nav>
         <Link to='/login' >Login</Link>
-        <Link to='/friends-list' >Friends List</Link>
+        <Link to='/friends-list' >Friends</Link>
       </nav>
       <FriendsContext.Provider>
         <Switch>
