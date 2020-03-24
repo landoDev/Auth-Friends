@@ -4,7 +4,7 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
 
-const LoginForm = () =>{
+const LoginForm = props =>{
     const [isLoading, setIsLoading] = useState(false)
     const [credentials, setCredentials] = useState({
         username: '',
@@ -21,11 +21,12 @@ const LoginForm = () =>{
 
     const handleLogin = e =>{
         e.preventDefault();
-        axios.post('http://localhost:5000/api/login', credentials)
+        axiosWithAuth()
+        .post('/api/login', credentials)
         .then(res=>{
             console.log(res);
             localStorage.setItem('token', JSON.stringify(res.data.payload))
-            //props.history.push('/friends-list)
+            props.history.push('/friends-list')
         })
     }
 
